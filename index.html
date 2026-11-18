@@ -132,6 +132,20 @@
     details[open] summary svg { transform: rotate(90deg); }
     ol.steps { margin: 4px 0 0; padding-left: 22px; color: var(--muted); font-size: 15px; }
     ol.steps li { margin: 6px 0; }
+    .signals { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 16px 0; }
+    @media (max-width: 600px) { .signals { grid-template-columns: 1fr; } }
+    .signal { display: flex; gap: 12px; align-items: flex-start; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
+    .signal strong { display: block; font-size: 15px; }
+    .signal span:not(.pill) { font-size: 14px; color: var(--muted); }
+    .pill { flex: none; font-size: 12px; font-weight: 700; padding: 3px 9px; border-radius: 999px; margin-top: 1px; }
+    .pill-crit { color: #B42318; background: #FEE4E2; }
+    .pill-warn { color: #93370D; background: #FEF0C7; }
+    @media (prefers-color-scheme: dark) { .pill-crit { color: #FDA29B; background: #3B1715; } .pill-warn { color: #FEC84B; background: #3A2A0C; } }
+    .chart { margin: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px; }
+    .chart img { width: 100%; height: auto; display: block; }
+    .chart figcaption { font-size: 14px; color: var(--muted); margin-top: 8px; }
+    ul.ticks { margin: 16px 0 0; padding-left: 20px; color: var(--muted); font-size: 15px; }
+    ul.ticks li { margin: 6px 0; }
     .note { font-size: 13px; color: var(--faint); margin-top: 14px; }
     .card-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
 
@@ -213,7 +227,6 @@
         <p class="lede">Finance student at Rutgers Business School focused on FP&amp;A, corporate finance and valuation. I build 3-statement models, DCFs and the dashboards that turn them into decisions.</p>
         <div class="cta">
           <a class="btn btn-primary" href="assets/Ranny_Hefetz_Resume.pdf" target="_blank" rel="noopener"><svg><use href="#i-download"/></svg>Download resume</a>
-          <a class="btn btn-ghost" href="https://github.com/rannyhz/finance-portfolio" target="_blank" rel="noopener"><svg><use href="#i-github"/></svg>Models on GitHub</a>
           <a class="btn btn-ghost" href="https://linkedin.com/in/rannyh" target="_blank" rel="noopener"><svg><use href="#i-linkedin"/></svg>LinkedIn</a>
         </div>
 
@@ -273,25 +286,50 @@
           <p class="note">Internship files are confidential and are not shared.</p>
         </article>
 
-        <div class="grid-2">
-          <article class="card role">
-            <div class="role-top">
-              <div>
-                <h3>Independent Financial Consultant</h3>
-                <div class="title">Financial Modeling</div>
-              </div>
-              <div class="meta">Dec 2025 – Jul 2026</div>
+        <article class="card role">
+          <div class="role-top">
+            <div>
+              <h3>Independent Financial Consultant</h3>
+              <div class="title">Financial Modeling</div>
             </div>
-            <ul>
-              <li>Built an automated <strong>36-month 3-statement model</strong> for a manufacturing client, forecasting EBITDA margin, working capital and cash runway from a single input sheet.</li>
-              <li>Built KPI dashboards for monthly actual-vs-budget variance and liquidity, plus DCF and debt-sizing analyses.</li>
-            </ul>
-            <div class="card-links">
-              <a class="btn btn-ghost btn-sm" href="https://drive.google.com/file/d/1WqouHb4yA4_9gTQ1i537INpolp2lfKX2/view?usp=drivesdk" target="_blank" rel="noopener">Sample report (PDF)<svg><use href="#i-arrow"/></svg></a>
-              <a class="btn btn-ghost btn-sm" href="https://github.com/rannyhz/finance-portfolio/tree/main/projects/04-small-business-forecast-template" target="_blank" rel="noopener">Template<svg><use href="#i-arrow"/></svg></a>
-            </div>
-          </article>
+            <div class="meta">Dec 2025 – Jul 2026<br>New York, NY</div>
+          </div>
+          <ul>
+            <li>Built an automated <strong>36-month 3-statement model</strong> for a Swiss manufacturing client, forecasting EBITDA margin, working capital and cash runway from a single input sheet.</li>
+            <li>Built KPI dashboards for monthly actual-vs-budget variance and liquidity, plus DCF and debt-sizing analyses.</li>
+          </ul>
 
+          <div class="highlight">
+            <div class="label">Client deliverable</div>
+            <div class="name">Manufacturing Financial Diagnostic System</div>
+            <div class="sub">The client's accountant already produced their statements. They wanted a tool that catches warning signs early, so the owner can see when to raise financing, free up working capital or reduce leverage.</div>
+            <div class="signals" role="list">
+              <div class="signal" role="listitem"><span class="pill pill-crit">Critical</span><div><strong>Financing need</strong><span>Any month with negative projected cash</span></div></div>
+              <div class="signal" role="listitem"><span class="pill pill-warn">Warning</span><div><strong>Working capital</strong><span>Cash conversion cycle over 45 days</span></div></div>
+              <div class="signal" role="listitem"><span class="pill pill-crit">Critical</span><div><strong>Liquidity</strong><span>Current ratio below the benchmark</span></div></div>
+              <div class="signal" role="listitem"><span class="pill pill-warn">Warning</span><div><strong>Leverage</strong><span>Debt-to-equity above the benchmark</span></div></div>
+            </div>
+            <figure class="chart">
+              <picture>
+                <source srcset="assets/mfg-cash-dark.webp" media="(prefers-color-scheme: dark)">
+                <img src="assets/mfg-cash-light.webp" alt="Ending cash over 36 months from the sample inputs. Cash dips to minus 9.6 thousand francs in month 1, then rises to 2.73 million by month 36." loading="lazy" width="1400" height="644">
+              </picture>
+              <figcaption>Sample run: the business is profitable from month 1, yet cash dips below zero while receivables and inventory build. The model flags that as a financing need.</figcaption>
+            </figure>
+            <ul class="ticks">
+              <li>One input sheet: revenue and growth, seven cost lines, DSO, DIO and DPO, capital spending, debt and tax</li>
+              <li>Linked income statement, balance sheet and cash flow over 36 months, all priced in Swiss francs</li>
+              <li>Benchmarks on their own sheet, each with its source, so they can be updated for any sub-sector</li>
+              <li>A KPI engine with Healthy/Critical labels, plus a dashboard with six charts</li>
+            </ul>
+          </div>
+          <div class="card-links">
+            <a class="btn btn-ghost btn-sm" href="https://github.com/rannyhz/finance-portfolio/tree/main/projects/05-manufacturing-financial-diagnostic" target="_blank" rel="noopener">See the model<svg><use href="#i-arrow"/></svg></a>
+            <a class="btn btn-ghost btn-sm" href="https://github.com/rannyhz/finance-portfolio/raw/main/projects/05-manufacturing-financial-diagnostic/Manufacturing_Financial_Diagnostic_System.xlsx"><svg><use href="#i-download"/></svg>Download (Excel)</a>
+          </div>
+        </article>
+
+        <div>
           <article class="card role">
             <div class="role-top">
               <div>
