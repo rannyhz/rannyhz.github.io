@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta name="color-scheme" content="light">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Ranny Hefetz | Finance Portfolio</title>
@@ -29,21 +30,6 @@
       --navy: #0B1B33;
       --shadow: 0 1px 2px rgba(15, 27, 45, .05), 0 4px 16px rgba(15, 27, 45, .05);
       --radius: 14px;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #0A1220;
-        --surface: #101B2D;
-        --surface-2: #142236;
-        --text: #E7ECF3;
-        --muted: #A9B4C4;
-        --faint: #8592A5;
-        --line: #1F2E45;
-        --accent: #5BD3E8;
-        --accent-strong: #8BE2F0;
-        --accent-soft: #12303D;
-        --shadow: 0 1px 2px rgba(0,0,0,.3), 0 6px 20px rgba(0,0,0,.25);
-      }
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; scroll-padding-top: 76px; }
@@ -74,7 +60,6 @@
     .btn svg { width: 17px; height: 17px; flex: none; }
     .btn-primary { background: var(--navy); color: #fff; }
     .btn-primary:hover { background: #13294A; color: #fff; }
-    @media (prefers-color-scheme: dark) { .btn-primary { background: var(--accent); color: #062029; } .btn-primary:hover { background: var(--accent-strong); color: #062029; } }
     .btn-ghost { background: var(--surface); color: var(--text); border-color: var(--line); }
     .btn-ghost:hover { border-color: var(--faint); color: var(--text); }
     .btn-sm { min-height: 40px; padding: 0 14px; font-size: 14px; }
@@ -140,7 +125,6 @@
     .pill { flex: none; font-size: 12px; font-weight: 700; padding: 3px 9px; border-radius: 999px; margin-top: 1px; }
     .pill-crit { color: #B42318; background: #FEE4E2; }
     .pill-warn { color: #93370D; background: #FEF0C7; }
-    @media (prefers-color-scheme: dark) { .pill-crit { color: #FDA29B; background: #3B1715; } .pill-warn { color: #FEC84B; background: #3A2A0C; } }
     .chart { margin: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px; }
     .chart img { width: 100%; height: auto; display: block; }
     .chart figcaption { font-size: 14px; color: var(--muted); margin-top: 8px; }
@@ -186,7 +170,6 @@
     .contact .btn-ghost:hover { border-color: rgba(255,255,255,.6); color: #fff; }
     .contact .btn-light { background: #fff; color: var(--navy); }
     .contact .btn-light:hover { background: #E3F2F6; color: var(--navy); }
-    @media (prefers-color-scheme: dark) { .contact { background: var(--surface-2); border: 1px solid var(--line); } }
     @media (max-width: 600px) { .contact { padding: 28px 20px; } }
     footer { padding: 32px 0 48px; color: var(--faint); font-size: 13px; }
     footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
@@ -311,7 +294,6 @@
             </div>
             <figure class="chart">
               <picture>
-                <source srcset="assets/mfg-cash-dark.webp" media="(prefers-color-scheme: dark)">
                 <img src="assets/mfg-cash-light.webp" alt="Ending cash over 36 months from the sample inputs. Cash dips to minus 9.6 thousand francs in month 1, then rises to 2.73 million by month 36." loading="lazy" width="1400" height="644">
               </picture>
               <figcaption>Sample run: the business is profitable from month 1, yet cash dips below zero while receivables and inventory build. The model flags that as a financing need.</figcaption>
